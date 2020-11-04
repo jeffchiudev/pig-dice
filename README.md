@@ -49,7 +49,7 @@ _3. Open index.html in Chrome or preferred browser_
 | should display current score of player | displayScore(player1) | 'player 1 current score 36' |
 | Clear score |||
 | should clear the score of previous rolls | | |
-| Win ||||
+| checkWon ||||
 | when either player reaches 100 pts will alert them that they've won | | 'player 2 wins' |
 
 ## Known Bugs

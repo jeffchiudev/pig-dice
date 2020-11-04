@@ -3,13 +3,17 @@
 // Code: the code we need to run to complete the test, if any
 // Expect: theCodeWeRun.toEqual(SomeValue)
 
-Describe: roll()
+Describe: rollDice()
 
 //Test: should correctly return a dice roll value 
 //Code: roll1 = roll();
 //Expect: roll1.toequal("6")
 
 Describe tallyScore()
+
+//Test: should correctly save one score
+//Code: tallScore(rollDice());
+//Expect: scoreCard = [5]
 
 Test: should correctly tally the score of a turn
 Code: roll1 = 5, 4, 3
@@ -36,7 +40,7 @@ Test: should correctly clear out the score values in BL before next turn
 Code: 
 Expect: 
 
-Describe win()
+Describe checkWon()
 
 Test: should correctly indicate which player has won if they reach 100+ pts
 Code: player1Total = 105;
