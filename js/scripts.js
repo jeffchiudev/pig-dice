@@ -5,16 +5,29 @@ function rollDice() {
 
 // BL for playerScore: adds round scores to object to track per-round values
 function PlayerScoreCard() {
-  this.scoreCard = [];
+  this.turnScoreCard = [];
+  this.totalScore = []
 }
 
 PlayerScoreCard.prototype.addRoundScore = function(score) {
-  this.scoreCard.push(score);
+  this.turnScoreCard.push(score);
+}
+
+PlayerScoreCard.prototype.finalizeTurn = function(array) {
+  let roundTotal = 0;
+  if (array.includes(1)) {
+    return roundTotal
+  } else {
+    for (let i = 0; i <= array.length - 1; i++) {
+      roundTotal += array[i]; 
+    }
+    return roundTotal;
+  };
 }
 
 // BL for checkWon
 function checkWon(score) {
-  if(score >= 100) {
+  if(score >= 100) {  
     return true
   } else {
     return false
@@ -24,6 +37,7 @@ function checkWon(score) {
 
 // User Interface Logic
 let player1Score = new PlayerScoreCard();
+let player2Score = new PlayerScoreCard();
 console.log(player1Score)
 
 function displayScore(randValue) {
@@ -41,6 +55,8 @@ $(document).ready(function () {
 
   $('.stopPlay').click(function () {
     console.log("Hold");
+    console.log(player1Score.finalizeTurn(player1Score.turnScoreCard));
+    
     // when pressed, calculate everything in that temporaryScoreArray=[]
     // also, determine if they've won - run checkWon()
     let score = 99;

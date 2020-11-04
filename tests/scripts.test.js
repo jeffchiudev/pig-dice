@@ -15,13 +15,13 @@ Describe tallyScore()
 //Code: tallScore(rollDice());
 //Expect: scoreCard = [5]
 
-Test: should correctly tally the score of a turn
-Code: roll1 = 5, 4, 3
-Expect: roll1total.toequal(12)
+//Test: should correctly tally the score of a turn
+//Code: roll1 = 5, 4, 3
+//Expect: roll1total.toequal(12)
 
-Test: should correctly tally a score of 0 if a 1 is rolled
-Code: roll1 = 5, 4, 3, 1
-Expect: roll1total.toequal(0)
+//Test: should correctly tally a score of 0 if a 1 is rolled
+//Code: roll1 = 5, 4, 3, 1
+//Expect: roll1total.toequal(0)
 
 Describe totalScore()
 
