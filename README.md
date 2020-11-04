@@ -43,6 +43,8 @@ _3. Open index.html in Chrome or preferred browser_
 | should return dice roll value | function diceRoll() | '5' |
 | Score Tally |||
 | should return score of previous turn | tallyScore(5, 3, 6) | '14' |
+| Total Score |||
+| should return total score after turn ends | player1Score(14,23) | 37 |
 | Display Score |||
 | should display current score of player | displayScore(player1) | 'player 1 current score 36' |
 | Clear score |||
