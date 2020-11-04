@@ -1,12 +1,12 @@
-# _{Application Name}_
+# _Pig Dice_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Allows two players to play a game of pig dice, 04.nov.2020_
 
-#### By _**{List of contributors}**_
+#### By _**Jeff Chiu & Austin Schrader**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_[This wikipedia article](https://en.wikipedia.org/wiki/Pig_%28dice_game%29) explains the rules of pig dice._ 
 
 ## Setup/Installation Requirements
 
@@ -34,6 +34,21 @@ _2. Navigate into the `{NAME_OF_DIRECTORY}` directory, and open in Visual Studio
 _3. Open index.html in Chrome or preferred browser_
 
 #### To see my live website go to {GH_PAGES_LINK_HERE}!
+
+## Test Specification
+
+| Test | Input | Output |
+| :----------- | :----------------------| :----------- |
+| Dice Roll |||
+| should return dice roll value | function diceRoll() | '5' |
+| Score Tally |||
+| should return score of previous turn | tallyScore(5, 3, 6) | '14' |
+| Display Score |||
+| should display current score of player | displayScore(player1) | 'player 1 current score 36' |
+| Clear score |||
+| should clear the score of previous rolls | | |
+| Win ||||
+| when either player reaches 100 pts will alert them that they've won | | 'player 2 wins' |
 
 ## Known Bugs
 
