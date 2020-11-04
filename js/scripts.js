@@ -4,16 +4,17 @@ function rollDice() {
 }
 
 // BL for playerScore: adds round scores to object to track per-round values
-function PlayerScoreCard() {
+function Player() {
   this.turnScoreCard = [];
-  this.totalScore = []
+  this.totalScore = 0;
+  this.isPlaying;
 }
 
-PlayerScoreCard.prototype.addRoundScore = function(score) {
+Player.prototype.addScore = function(score) {
   this.turnScoreCard.push(score);
 }
 
-PlayerScoreCard.prototype.finalizeTurn = function(array) {
+Player.prototype.finalizeTurn = function(array) {
   let roundTotal = 0;
   if (array.includes(1)) {
     return roundTotal
@@ -21,8 +22,19 @@ PlayerScoreCard.prototype.finalizeTurn = function(array) {
     for (let i = 0; i <= array.length - 1; i++) {
       roundTotal += array[i]; 
     }
+    this.totalScore += roundTotal;
     return roundTotal;
   };
+}
+
+Player.prototype.swapTurn = function() {
+  if (player1Score.isPlaying == true) {
+    player1Score.isPlaying = false;
+    player2Score.isPlaying = true;
+  } else {
+    player2Score.isPlaying = false;
+    player1Score.isPlaying = true;
+  }
 }
 
 // BL for checkWon
@@ -34,32 +46,54 @@ function checkWon(score) {
   }
 }
 
-
 // User Interface Logic
-let player1Score = new PlayerScoreCard();
-let player2Score = new PlayerScoreCard();
+let player1Score = new Player();
+player1Score.isPlaying = true;
+let player2Score = new Player();
 console.log(player1Score)
 
-function displayScore(randValue) {
-  return $(".userResults").text(randValue);
+function displayScore(diceScore) {
+  return $(".userResults").text(diceScore);
 }
 
 $(document).ready(function () {
-  $('#formOne').submit(function(event) {
+  let formOne = $('#formOne');
+  $(formOne).submit(function(event) {
     event.preventDefault();
-    let randValue = rollDice()
-    displayScore(randValue);
-    player1Score.addRoundScore(randValue);
-    console.log(player1Score)
+    if (player1Score.isPlaying == true) {
+      let diceScore = rollDice();
+      displayScore(diceScore);
+      player1Score.addScore(diceScore);
+    } else {
+      let diceScore = rollDice()
+      displayScore(diceScore);
+      player2Score.addScore(diceScore);
+    }
   })
 
-  $('.stopPlay').click(function () {
-    console.log("Hold");
-    console.log(player1Score.finalizeTurn(player1Score.turnScoreCard));
-    
-    // when pressed, calculate everything in that temporaryScoreArray=[]
-    // also, determine if they've won - run checkWon()
-    let score = 99;
-    checkWon(score);
+  let stopPlay = $(".stopPlay")
+  $(stopPlay).click(function () {
+    if (player1Score.isPlaying == true) {
+      // If there's a 1, it sets roundScore to 0. Otherwise, it sums it and 
+      // pushes it to the players total score tracker
+      player1Score.finalizeTurn(player1Score.turnScoreCard);
+      // Clears out the current rounds past rolls
+      player1Score.turnScoreCard = [];
+      // Swaps the current player
+      player1Score.swapTurn()
+      $("#player-1-score").text(player1Score.totalScore);
+      //console.log(player2Score)
+      $("#currentPlayer").empty();
+      $("#currentPlayer").append("Player 2")
+    } else {
+      player2Score.finalizeTurn(player2Score.turnScoreCard);
+      player2Score.turnScoreCard = [];
+      player2Score.swapTurn();
+      //console.log(player1Score)
+      $("#player-2-score").text(player2Score.totalScore);
+      $("#currentPlayer").empty();
+      $("#currentPlayer").append("Player 1")
+    }    
+
   })
 });

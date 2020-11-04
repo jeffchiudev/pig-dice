@@ -9,7 +9,7 @@ Describe: rollDice()
 //Code: roll1 = roll();
 //Expect: roll1.toequal("6")
 
-Describe tallyScore()
+Describe Player.prototype.addScore()
 
 //Test: should correctly save one score
 //Code: tallScore(rollDice());
@@ -23,11 +23,11 @@ Describe tallyScore()
 //Code: roll1 = 5, 4, 3, 1
 //Expect: roll1total.toequal(0)
 
-Describe totalScore()
+Describe Player.prototype.finalizeTurn()
 
-Test: should correctly add a final score to a players total score 
-Code: player1Total = totalScore(roll1, roll2, roll3)
-Expect: player1Total = 36
+//Test: should correctly add a final score to a players total score 
+//Code: player1Total = totalScore(roll1, roll2, roll3)
+//Expect: player1Total = 36
 
 Describe displayScore()
 
