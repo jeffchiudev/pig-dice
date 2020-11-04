@@ -5,9 +5,9 @@
 
 Describe: roll()
 
-Test: should correctly return a dice roll value 
-Code: roll1 = roll();
-Expect: roll1.toequal("6")
+//Test: should correctly return a dice roll value 
+//Code: roll1 = roll();
+//Expect: roll1.toequal("6")
 
 Describe tallyScore()
 
@@ -32,9 +32,9 @@ Code: player1Total = 36; player2Total = 55;
 Expect: "Player 1 Score is 36" "Player 2 Score is 55"
 
 Describe clearScore()
-Test: 
+Test: should correctly clear out the score values in BL before next turn 
 Code: 
-Expect:
+Expect: 
 
 Describe win()
 
