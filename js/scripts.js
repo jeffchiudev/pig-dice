@@ -39,8 +39,8 @@ Player.prototype.swapTurn = function() {
 
 // BL for checkWon
 function checkWon(score) {
-  if(score >= 10) {  
-    return true
+  if(score >= 100) {  
+    return true;
   }
 }
 
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
   let stopPlay = $(".stopPlay")
   $(stopPlay).click(function () {
-    $(".results").empty()
+    $(".results").empty();
     if (player1Score.isPlaying == true) {
       // If there's a 1, it sets roundScore to 0. Otherwise, it sums it and 
       // pushes it to the players total score tracker
