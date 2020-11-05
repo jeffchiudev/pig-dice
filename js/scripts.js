@@ -39,10 +39,8 @@ Player.prototype.swapTurn = function() {
 
 // BL for checkWon
 function checkWon(score) {
-  if(score >= 100) {  
+  if(score >= 10) {  
     return true
-  } else {
-    return false
   }
 }
 
@@ -73,6 +71,7 @@ $(document).ready(function () {
 
   let stopPlay = $(".stopPlay")
   $(stopPlay).click(function () {
+    $(".results").empty()
     if (player1Score.isPlaying == true) {
       // If there's a 1, it sets roundScore to 0. Otherwise, it sums it and 
       // pushes it to the players total score tracker
@@ -83,6 +82,13 @@ $(document).ready(function () {
       player1Score.swapTurn()
       $("#player-1-score").text(player1Score.totalScore);
       //console.log(player2Score)
+      if (checkWon(player1Score.totalScore)) {
+        $(".results").empty().append("Player 1 is the winner");
+        player1Score.totalScore = 0;
+        player2Score.totalScore = 0;
+        $("#player-1-score").text("0");
+        $("#player-2-score").text("0");
+      }
       $("#currentPlayer").empty();
       $("#currentPlayer").append("Player 2")
     } else {
@@ -91,6 +97,13 @@ $(document).ready(function () {
       player2Score.swapTurn();
       //console.log(player1Score)
       $("#player-2-score").text(player2Score.totalScore);
+      if (checkWon(player2Score.totalScore)) {
+        $(".results").empty().append("Player 2 is the winner");
+        player2Score.totalScore = 0;
+        player1Score.totalScore = 0;
+        $("#player-2-score").text("0");
+        $("#player-1-score").text("0");
+      }
       $("#currentPlayer").empty();
       $("#currentPlayer").append("Player 1")
     }    

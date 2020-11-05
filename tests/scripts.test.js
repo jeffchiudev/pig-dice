@@ -29,6 +29,7 @@ Describe Player.prototype.finalizeTurn()
 //Code: player1Total = totalScore(roll1, roll2, roll3)
 //Expect: player1Total = 36
 
+/*
 Describe displayScore()
 
 Test: should correctly display each players score correctly in the UI/DOM
@@ -39,9 +40,10 @@ Describe clearScore()
 Test: should correctly clear out the score values in BL before next turn 
 Code: 
 Expect: 
+*/
 
-Describe checkWon()
+Describe checkWon()*~
 
-Test: should correctly indicate which player has won if they reach 100+ pts
-Code: player1Total = 105;
-Expect: "Player 1 is the winner"
+//Test: should correctly indicate which player has won if they reach 100+ pts
+//Code: player1Total = 105;
+//Expect: "Player 1 is the winner"
