@@ -48,7 +48,7 @@ function checkWon(score) {
 let player1Score = new Player();
 player1Score.isPlaying = true;
 let player2Score = new Player();
-console.log(player1Score)
+//console.log(player1Score)
 
 function displayScore(diceScore) {
   return $(".userResults").text(diceScore);
